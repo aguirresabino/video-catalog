@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS videos_catalog;
+CREATE DATABASE IF NOT EXISTS videos_catalog_test;
