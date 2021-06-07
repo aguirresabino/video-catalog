@@ -2,43 +2,41 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Category;
+use App\Models\Genre;
 use PHPUnit\Framework\TestCase;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Traits\Uuid;
 
-class CategoryTest extends TestCase
+class GenreTest extends TestCase
 {
 
     public function testFillableAttribute()
     {
-        $category = new Category();
-        $fillable = ['name', 'description', 'is_active'];
-        $this->assertEquals($fillable, $category->getFillable());
+        $genre = new Genre();
+        $fillable =  ['name', 'is_active'];
+        $this->assertEqualsCanonicalizing($fillable, $genre->getFillable());
     }
 
     public function testCastsAttribute()
     {
         $casts = ['id' => 'string', 'deleted_at' => 'datetime', 'is_active' => 'boolean'];
-        $category = new Category();
-        $this->assertEquals($casts, $category->getCasts());
+        $genre = new Genre();
+        $this->assertEqualsCanonicalizing($casts, $genre->getCasts());
     }
 
     public function testDatesAttribute()
     {
         $dates = ['deleted_at', 'created_at', 'updated_at'];
-        $category = new Category();
-        foreach($dates as $date) {
-            $this->assertContains($date, $category->getDates());
-        }
-        $this->assertCount(count($dates), $category->getDates());
+        $genre = new Genre();
+        $this->assertEqualsCanonicalizing($dates, $genre->getDates());
+        $this->assertCount(count($dates), $genre->getDates());
     }
 
     public function testIncrementingAttribute()
     {
-        $category = new Category();
-        $this->assertFalse($category->getIncrementing());
+        $genre = new Genre();
+        $this->assertFalse($genre->getIncrementing());
     }
 
 
@@ -47,7 +45,7 @@ class CategoryTest extends TestCase
         $traits = [
             HasFactory::class, SoftDeletes::class, Uuid::class,
         ];
-        $categoryTraits = array_keys(class_uses(Category::class));
+        $categoryTraits = array_keys(class_uses(Genre::class));
         $this->assertEquals($traits, $categoryTraits);
     }
 }

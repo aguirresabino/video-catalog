@@ -2,12 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\Gender;
+use App\Models\Genre;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class GenderFactory extends Factory
+class GenreFactory extends Factory
 {
-    protected $model = Gender::class;
+    protected $model = Genre::class;
 
     public function definition()
     {
