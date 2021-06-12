@@ -10,7 +10,7 @@ steps:
   args: ['exec', '-t', 'micro-videos-catalog-app', 'cp', '.env.example', '.env']
 - id: "Copy .env.testing"
   name: "docker"
-  args: ['exec', '-t', 'micro-videos-catalog-app', 'cp', '.env.testing', '.env.testing']
+  args: ['exec', '-t', 'micro-videos-catalog-app', 'cp', '.env.testing.example', '.env.testing']
 - id: "Run Composer"
   name: "docker"
   args: ['exec', '-t', 'micro-videos-catalog-app', 'composer', 'install']
