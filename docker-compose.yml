@@ -23,7 +23,8 @@ services:
       - redis
 
   nginx:
-    build: .docker/nginx
+    image: mysql:5.7
+    command: --innodb-use-native-aio=0
     container_name: micro-videos-catalog-nginx
     restart: always
     tty: true
