@@ -2,3 +2,21 @@ steps:
 - id: "Run docker-compose"
   name: "docker/compose"
   args: ['-f', 'docker-compose.integration.yml', 'up', '-d']
+- id: "Copy .env"
+  name: "docker/compose"
+  args: ['exec', 'app', 'cp', '.env.example', '.env']
+- id: "Copy .env.testing"
+  name: "docker/compose"
+  args: ['exec', 'app', 'cp', '.env.testing', '.env.testing']
+- id: "Run Composer"
+  name: "docker/compose"
+  args: ['exec', 'app', 'composer', 'install']
+- id: "Run artisan key:generate"
+  name: "docker/compose"
+  args: ['exec', 'app', 'php', 'artisan', 'key:generate']
+- id: "Run migrations"
+  name: "docker/compose"
+  args: ['exec', 'app', 'php', 'artisan', 'migrate', '--seed']
+- id: "Run tests"
+  name: "docker/compose"
+  args: ['exec', 'app', 'php', './vendor/bin/phpunit', '-c', './phpunit.xml']
