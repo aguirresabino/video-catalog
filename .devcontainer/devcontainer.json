@@ -38,7 +38,8 @@
 		"mikestead.dotenv",
 		"msjsdiag.debugger-for-chrome",
 		"wakatime.vscode-wakatime",
-		"calebporzio.better-phpunit"
+		"calebporzio.better-phpunit",
+		"ms-azuretools.vscode-docker"
 	]
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
