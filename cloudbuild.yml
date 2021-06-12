@@ -19,7 +19,7 @@ steps:
   args: ['exec', '-t', 'micro-videos-catalog-app', 'php', 'artisan', 'key:generate']
 - id: "Run migrations"
   name: "docker"
-  args: ['exec', '-t', 'micro-videos-catalog-app', 'php', 'artisan', 'migrate', '--seed']
+  args: ['exec', '-t', 'micro-videos-catalog-app', 'php', 'artisan', 'migrate']
 - id: "Run tests"
   name: "docker"
   args: ['exec', '-t', 'micro-videos-catalog-app', 'php', './vendor/bin/phpunit', '-c', './phpunit.xml']
