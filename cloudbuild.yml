@@ -4,19 +4,19 @@ steps:
   args: ['-f', 'docker-compose.integration.yml', 'up', '-d']
 - id: "Copy .env"
   name: "docker"
-  args: ['exec', '-t', 'app', 'cp', '.env.example', '.env']
+  args: ['exec', '-t', 'micro-videos-catalog-app', 'cp', '.env.example', '.env']
 - id: "Copy .env.testing"
   name: "docker"
-  args: ['exec', '-t', 'app', 'cp', '.env.testing', '.env.testing']
+  args: ['exec', '-t', 'micro-videos-catalog-app', 'cp', '.env.testing', '.env.testing']
 - id: "Run Composer"
   name: "docker"
-  args: ['exec', '-t', 'app', 'composer', 'install']
+  args: ['exec', '-t', 'micro-videos-catalog-app', 'composer', 'install']
 - id: "Run artisan key:generate"
   name: "docker"
-  args: ['exec', '-t', 'app', 'php', 'artisan', 'key:generate']
+  args: ['exec', '-t', 'micro-videos-catalog-app', 'php', 'artisan', 'key:generate']
 - id: "Run migrations"
   name: "docker"
-  args: ['exec', '-t', 'app', 'php', 'artisan', 'migrate', '--seed']
+  args: ['exec', '-t', 'micro-videos-catalog-app', 'php', 'artisan', 'migrate', '--seed']
 - id: "Run tests"
   name: "docker"
-  args: ['exec', '-t', 'app', 'php', './vendor/bin/phpunit', '-c', './phpunit.xml']
+  args: ['exec', '-t', 'micro-videos-catalog-app', 'php', './vendor/bin/phpunit', '-c', './phpunit.xml']
